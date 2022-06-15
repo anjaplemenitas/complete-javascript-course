@@ -1,87 +1,68 @@
-// LECTURE: Basic Operators
+// JavaScript Fundamentals – Part 1
 
-let ukPopulation = 67;
+// Coding Challenge #1
 
-console.log(ukPopulation + 1);
-const finlandPopulation = 6;
-const averagePopulation = 33;
+const markWeight = 78;
+const markHeight = 1.69;
+const johnWeight = 92;
+const johnHeight = 1.95;
 
-// LECTURE: Strings and Template Literals
+const markBMI = (markWeight / markHeight ** 2).toFixed(1);
+// markWeight / (markHeight * markHeight) 
+const johnBMI = (johnWeight / (johnHeight * johnHeight)).toFixed(1);
+// johnWeight / johnHeight ** 2
 
-let description = `Portugal is in Europe, and its 11 million people speak portuguese`;
+// console.log(markBMI, johnBMI)     // testing
+const markHigherBMI = markBMI > johnBMI;
+console.log(markHigherBMI); // getting true
 
-// LECTURE: Taking Decisions: if / else Statements
+// Coding Challenge #2
 
-if (ukPopulation > averagePopulation)
-console.log(`UK's population is above average`);
-else 
-console.log(`UK's population is 22 million below average`);
-
-// LECTURE: Type Conversion and Coercion
-
-console.log('5'+'9')
-console.log('124'< 9)
-
-// LECTURE: Equality Operators: == vs. ===
-
-let numNeighbours = prompt('How many neighbour countries does your country have?');
-
-if (numNeighbours == 1)
-console.log('More than 1 border')
-else
-console.log('No borders')
-
-// LECTURE: Logical Operators
-
-const sarahCountryLanguage = 'english'
-const sarahCountryPopulation = 50;
-const sarahCountryLocation = 'contient'
-
-let country = prompt('Where do you live?');
-let countryLanguage = prompt('What is the Language of your county?');
-let countryPopulation = prompt('Whats the population of your county?');
-let countryLocation = prompt('Is your country island or continent?');
-
-if (sarahCountryLanguage == countryLanguage &&
-    sarahCountryPopulation <= countryPopulation &&
-    sarahCountryLocation == countryLocation) {
-console.log(`You should live in ${country} :)`);
+if (markHigherBMI) {
+    console.log(`Mark's BMI is higher than John's!`);
 } else {
-console.log(`${country} does not meet your criteria :(`);
+    console.log(`John's BMI is higher than Mark's!`);
 };
 
-LECTURE: The switch Statement
-let language = prompt('What language do you speak?');
+if (markHigherBMI) {
+    console.log(`Mark's BMI ${markBMI} is higher than John's ${johnBMI}!`);
+} else {
+    console.log(`John's BMI ${johnBMI} is higher than Mark's ${markBMI}!`);
+};
 
-switch (language) {
-    case 'chinese' || 'mandarin':
-        console.log('MOST number of native speakers!');
-        break;
-    case 'spanish':
-        console.log('2nd place in number of native speakers');
-        break;
-    case 'english':
-        console.log('3rd place');
-        break;
-    case 'hindi':
-        console.log('Number 4');
-        break;
-    case 'arabic':
-        console.log('5th most spoken language');
-        break;
-    default:
-        console.log('Great language too :D');
-    }
 
-// LECTURE: The Conditional (Ternary) Operator
+// Coding Challenge #3
 
-let country = prompt('Where do you live?');
-let countryPopulation = prompt('Whats the population of your county?');
+const dolphinsScore = (100 + 1 + 300)/3;
+const koalasScore = (100 + 1 + 300)/3;
+console.log(dolphinsScore, koalasScore);
 
-countryPopulation >= 33 ? (message = `${country}'s population is above average`) : (message = `${country}'s population is below average`);
-console.log(message)
+if (dolphinsScore > koalasScore) {
+    console.log("Winners are Dolphines!");
+} else {
+    console.log("Winners are Koalas!");
+};
 
-console.log(
-    `${country}'s population is ${countryPopulation > 33 ? 'above' :
-    'below'} average`,
-  );
+// Bonus1 & Bonus2
+const dolphinWinner = dolphinsScore > koalasScore;
+const koalasWinner = dolphinsScore < koalasScore;
+const tightScore = dolphinsScore === koalasScore;
+
+if (dolphinWinner && dolphinsScore >= 100) {
+    console.log("Winners are Dolphines!")
+} else if (koalasWinner && koalasScore >= 100) {
+    console.log("Winners are Koalas!");
+} else if (tightScore && dolphinsScore >= 100 && koalasScore >= 100) {
+    console.log("Draw!");
+} else {
+    console.log("No winner!");
+};
+
+
+// Coding Challenge #4
+
+const bill = 275;
+
+const tip = bill > 50 < 300 ? bill * 0.15 : bill * 0.20;
+
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`)
