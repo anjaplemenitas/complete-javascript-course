@@ -16,7 +16,7 @@ currentScorePlayer1.textContent = 0;
 currentScorePlayer2.textContent = 0;
 
 // Scores
-const scores = [0, 0];
+let scores = [0, 0];
 let currentScore = 0;
 
 // Players
@@ -38,15 +38,18 @@ const swichPlayer = function (player) {
   if (player === 0) {
     player2.classList.add('player--active');
     player1.classList.remove('player--active');
+    currentScore = 0;
   } else {
     player1.classList.add('player--active');
     player2.classList.remove('player--active');
+    currentScore = 0;
   }
 };
 
 // Rolling dice
 const dice = function (player) {
   const randomNumber = Math.floor(Math.random() * 6) + 1;
+
   if (randomNumber === 1) {
     diceEl.classList.remove('hidden');
     diceEl.src = 'dice-1.png';
@@ -54,6 +57,7 @@ const dice = function (player) {
     swichPlayer(player);
   } else {
     // Adding to current score
+
     if (scores[`${player}`] < 100) {
       diceEl.classList.remove('hidden');
       diceEl.src = `dice-${randomNumber}.png`;
@@ -74,11 +78,10 @@ holdBtn.addEventListener('click', function () {
   diceEl.classList.add('hidden');
   scores[`${player}`] += currentScore;
   document.getElementById(`current--${player}`).textContent = 0;
-  currentScore = 0;
   document.getElementById(`score--${player}`).textContent = scores[`${player}`];
+
   // Cheking the winner or swiching players
   if (scores[`${player}`] >= 100) {
-    console.log('winner');
     document
       .querySelector(`.player--${player}`)
       .classList.add('player--winner');
@@ -90,9 +93,16 @@ holdBtn.addEventListener('click', function () {
 
 // New game
 newGame.addEventListener('click', function () {
+  scores = [0, 0];
+  const player = activePlayer();
   scorePlayer1El.textContent = 0;
   scorePlayer2El.textContent = 0;
   currentScorePlayer1.textContent = 0;
   currentScorePlayer2.textContent = 0;
   diceEl.classList.add('hidden');
+  // change style
+  document
+    .querySelector(`.player--${player}`)
+    .classList.remove('player--winner');
+  document.getElementById(`name--${player}`).classList.remove('player--winner');
 });
