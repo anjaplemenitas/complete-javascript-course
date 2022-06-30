@@ -26,4 +26,120 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex]], this.mainMenu[mainIndex];
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+  orderPizza: function (mainIngre, ...otherIngre) {
+    console.log(mainIngre);
+    console.log(otherIngre);
+  },
 };
+
+const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+// console.log(restaurantName, hours, tags);
+const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
+
+// Mutating variables
+
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+
+({ a, b } = obj);
+// console.log(a, b);
+
+// Nested objects
+const {
+  fri: { open, close },
+} = openingHours;
+// console.log(open, close);
+
+// Spread operator
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(...newMenu);
+
+// Join two arrays together
+const menuAll = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(menuAll);
+
+// Iderables are arrays, string, maps, sets, NOT OBJECTS
+const str = 'jonas';
+const letters = [...str];
+// console.log(letters);
+
+const ingredients = [
+  // prompt("Let's make pasta! Ingrediens 1?"),
+  // prompt("Let's make pasta! Ingrediens 2?"),
+  // prompt("Let's make pasta! Ingrediens 3?"),
+];
+// restaurant.orderPasta(...ingredients);
+
+// Destructuring
+
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]]; // [1, 2, 3, 4]
+//REST, because on left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); // 1 2, [3, 4, 5]
+
+// Objects
+const { sat, ...otherDays } = restaurant.openingHours;
+console.log(otherDays);
+
+// Functions
+
+//rest pattern
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(5, 6, 7, 8);
+const x = [2, 3, 4, 5];
+add(...x);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'cheese');
+
+// || operator
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+const guests1 = restaurant.numGuests || 10;
+// console.log(guests1);
+
+// && operator
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushroom', 'spinach');
+}
+restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+
+// OR Logical Assignment Operator
+// Adding numGuest to rest who doesnt have them
+const rest1 = {
+  name: 'capri',
+  numGuest: 20,
+};
+const rest2 = {
+  name: 'pizz',
+  owner: 'pedro',
+};
+
+rest2.numGuest = rest2.numGuest || 10;
+rest1.numGuest ||= 10;
+// Nullish Assignment Operator ( ??= )
+// rest1.numGuest ??= 10;
+
+console.log(rest1);
+console.log(rest2);
