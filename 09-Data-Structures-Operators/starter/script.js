@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -40,7 +40,24 @@ const restaurant = {
   },
 };
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+/*
 const { name, openingHours, categories } = restaurant;
 // console.log(name, openingHours, categories);
 const {
@@ -144,7 +161,7 @@ rest1.numGuest ||= 10;
 
 console.log(rest1);
 console.log(rest2);
-*/
+
 
 // CHALLENGE 1#
 
@@ -206,3 +223,71 @@ const {
 game.printGoals(...game.scored);
 team1 > team2 && console.log('Team 2 is more likely to win'); // falsy value
 team1 < team2 && console.log('Team 1 is more likely to win');
+
+
+// Looping in array
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+for (const [numElement, element] of menu.entries()) {
+  console.log(`${numElement}: ${element}`);
+}
+
+
+
+//optional chaining
+
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  // console.log(restaurant.openingHours.mon.open);
+
+  //with iptional chaining
+  console.log(restaurant.openingHours.mon?.open); // only if mon exist, then it will read after - it will be undefined not error
+console.log(restaurant.openingHours?.mon?.open);
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  // console.log(day); // mon, tue, wed...
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; // exp: restaurant.openingHours[mon]
+  console.log(`on ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? "Method doesn't exist");
+
+// Arrays
+const users = [{ name: 'jonas', email: 'gmail.com' }];
+console.log(users[0]?.name ?? 'user array empty');
+
+
+
+// Looping objects keys
+const properties = Object.keys(openingHours); // ["thu","fri","sat"]
+console.log(`We are open ${properties.length} days a week`); // We are open 3 days a week
+let openStr = `We are open ${properties.length} days:`;
+for (const day of Object.keys(openingHours)) {
+  // console.log(day); // thu, fri, sat
+  openStr += ` ${day}, `;
+}
+console.log(openStr); // We are open 3 days: thu,  fri,  sat,
+
+// Looping values
+const values = Object.values(openingHours); // [0: {open: 12, close: 22}, 1: ...]
+// Entire object
+const entries = Object.entries(openingHours); //[0: (2) ['thu', {…}], 1: ...]
+console.log(entries);
+
+for (const x of entries) {
+  console.log(x); // [0: "thu", 1: {open: 12, close: 22}]
+}
+//  [key,   value]
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`); // On thu we open at 12 and close at 22
+}
+
+*/
