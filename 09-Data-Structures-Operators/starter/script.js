@@ -162,6 +162,7 @@ rest1.numGuest ||= 10;
 console.log(rest1);
 console.log(rest2);
 
+*/
 
 // CHALLENGE 1#
 
@@ -210,6 +211,8 @@ const game = {
     console.log(`${players.length} were scored.`);
   },
 };
+
+/*
 
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
@@ -291,3 +294,33 @@ for (const [day, { open, close }] of entries) {
 }
 
 */
+
+// Challenge 2
+
+const entries = Object.entries(game.scored);
+// console.log(entries); // 0: (2) ['0', 'Lewandowski']
+
+for (const [i, player] of game.scored.entries()) {
+  console.log(i, player);
+  console.log(`Goal ${i + 1}: ${player}`);
+}
+
+const odds = Object.values(game.odds);
+let avrScore = 0;
+for (const number of odds) avrScore += number;
+console.log((avrScore /= odds.length));
+
+for (const [team, odd] of odds) {
+  // console.log(team);
+  const string = team === 'x' ? `draw` : `victory ${game[team]}`;
+  console.log(`Odd of ${string}: ${odd}`);
+}
+
+// Bonus: Create an object
+const scorers = {};
+
+for (const players of game.scored) {
+  scorers[players] = (scorers[players] || 0) + 1;
+}
+
+console.log(scorers);
