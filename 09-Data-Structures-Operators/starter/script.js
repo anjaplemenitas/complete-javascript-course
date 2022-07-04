@@ -162,7 +162,6 @@ rest1.numGuest ||= 10;
 console.log(rest1);
 console.log(rest2);
 
-*/
 
 // CHALLENGE 1#
 
@@ -212,7 +211,7 @@ const game = {
   },
 };
 
-/*
+
 
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
@@ -293,7 +292,7 @@ for (const [day, { open, close }] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`); // On thu we open at 12 and close at 22
 }
 
-*/
+
 
 // Challenge 2
 
@@ -324,3 +323,112 @@ for (const players of game.scored) {
 }
 
 console.log(scorers);
+
+
+
+// set data structure - are still iterables
+
+const ordersSet = new Set([
+  'paste',
+  'pizza',
+  'pizza',
+  'risotto',
+  'pasta',
+  'pizza',
+]);
+console.log(ordersSet); // {'paste', 'pizza', 'risotto', 'pasta'}
+// example
+
+const staff = ['waiter', 'chef', 'water', 'maneger', 'chef', 'waiter'];
+// const staddUnique = new Set(staff); // {'waiter', 'chef', 'water', 'maneger'}
+const staddUnique = [...new Set(staff)]; // ['waiter', 'chef', 'water',
+console.log(new Set('plemenitas').size); // 9
+
+// maps
+const rest = new Map();
+rest
+  .set('Name', 'Classico Italiano')
+  .set(1, 'Italy')
+  .set(2, 'Potrugal')
+  .set('categories', ['italian', 'vegeterian', 'organic'])
+  .set('open', 11)
+  .set('closed', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest);
+console.log(rest.get(true));
+
+const time = 23;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+const arr = [1, 2];
+rest.set(arr, 'test');
+console.log(rest.get(arr)); // test
+
+rest.set(document.querySelector('h1'), 'Heading');
+
+const question = new Map([
+  // ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'javaScript'],
+  ['correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try again!'],
+]);
+
+convert object to map
+
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+map iteration
+
+Quize app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (key === 'number') console.log(`Anwser${key}: ${value}`);
+}
+const answer = Number(prompt('Your anwser'));
+
+console.log(question.get(question.get('correct') === answer)); // 3 === anwser
+
+Convert map to array
+
+console.log([...question]);
+console.log(...question.entries());
+console.log(...question.keys());
+console.log([...question.values()]);
+
+*/
+
+// challenge 3
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+const events = [...new Set(gameEvents.values())]; // ['⚽️ GOAL', '🔁 Substitution', '🔶 Yellow card', '🔴 Red card']
+gameEvents.delete(64);
+
+const minutes = [...new Set(gameEvents.keys())].pop();
+console.log(
+  `An event happened,on average, every ${minutes / gameEvents.size} minutes`
+);
+
+for (const [minutes, event] of gameEvents.entries()) {
+  const half = minutes <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${minutes}: ${event}`);
+}
