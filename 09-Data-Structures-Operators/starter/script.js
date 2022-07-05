@@ -433,12 +433,12 @@ for (const [minutes, event] of gameEvents.entries()) {
   console.log(`[${half} HALF] ${minutes}: ${event}`);
 }
 
-*/
+
 
 // Working with strings
 
-const airline = 'Tap Air Portugal';
-const plane = 'A320';
+// const airline = 'Tap Air Portugal';
+// const plane = 'A320';
 
 // console.log(plane[0]); // A
 // console.log(plane[1]); // 3
@@ -532,3 +532,29 @@ const plane = 'A320';
 
 // const message2 = 'Bad weather... All departures delayed...';
 // console.log(message2.repeat(5));
+*/
+
+// Challenge 4
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  camelCase(rows);
+});
+
+const camelCase = function (text) {
+  for (const word of text) {
+    const split = word.toLowerCase().replaceAll(' ', '').split('_'); // array seperated
+    const cutFirstWord = split.shift(); // removes first word
+    const arr = [];
+
+    for (const lastWords of split) {
+      arr.push(lastWords.replace(lastWords[0], lastWords[0].toUpperCase()));
+    }
+    const camelCaseWord = (cutFirstWord + arr).padEnd(20, ' ');
+    console.log(camelCaseWord + '✅'.repeat(text.indexOf(word) + 1));
+  }
+};
