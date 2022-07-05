@@ -402,7 +402,7 @@ console.log(...question.entries());
 console.log(...question.keys());
 console.log([...question.values()]);
 
-*/
+
 
 // challenge 3
 
@@ -432,3 +432,103 @@ for (const [minutes, event] of gameEvents.entries()) {
   const half = minutes <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF] ${minutes}: ${event}`);
 }
+
+*/
+
+// Working with strings
+
+const airline = 'Tap Air Portugal';
+const plane = 'A320';
+
+// console.log(plane[0]); // A
+// console.log(plane[1]); // 3
+// console.log(plane.length); // 4
+
+// console.log(airline.slice(-3)); // gal
+// console.log(airline.slice(3, 7)); //Air
+// console.log(airline.slice(0, airline.indexOf(' '))); // Tap
+// console.log(airline.slice(airline.lastIndexOf(' '))); //Portugal
+
+// console.log(airline.slice(1, -1)); // ap Air Portuga
+
+// const checkMiddleSeat = function (seat) {
+//   // B and E middle seats
+//   const s = seat.slice(-1);
+//   // console.log(s);
+//   if (s === 'B' || s === 'E') {
+//     console.log('Your seat is in the midzdle');
+//   } else {
+//     console.log('Your seat is not in the middle');
+//   }
+// };
+
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
+
+// console.log(new String('jonas').slice(3));
+
+// const passenger = 'joNas';
+// const passengerLower = passenger.toLowerCase();
+
+// const priceGB = '234,92£';
+// const priceUS = priceGB.replace('£', '$').replace(',', '.');
+// console.log(priceUS);
+
+// const announcement =
+//   'All passenger come to the boarding door 23. Boarding door 23';
+// console.log(announcement.replace('door', 'gate')); // All passenger come to the boarding gate 23. Boarding door 23
+// console.log(announcement.replaceAll('door', 'gate')); // All passenger come to the boarding gate 23. Boarding gate 23
+
+// // practice exercise
+
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase();
+//   if (baggage.includes('knife') || baggage.includes('gun')) {
+//     console.log('you are not allowed on board');
+//   } else {
+//     console.log('welcome aboard!');
+//   }
+// };
+
+// checkBaggage('I have a laptop, some food and a pocket knife');
+// checkBaggage('Socks and camera');
+// checkBaggage('Got some snacks and a gun for protection');
+
+// console.log('a+very+nice+string'.split('+')); // ['a', 'very', 'nice', 'string']
+// const [firstNeme, lastName] = 'Anja Plemenitas'.split(' ');
+// console.log(firstNeme);
+
+// const newName = ['Miss.', firstNeme, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   // console.log(names);
+//   const namesUpper = [];
+//   for (const n of names) {
+//     // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(' '));
+// };
+
+// capitalizeName('anja plemenitas');
+// capitalizeName('maria louise varga');
+
+// const message = 'Go to gate 32!';
+// console.log(message.padEnd(22, '='));
+
+// const maskCreditCard = function (number) {
+//   const str = number + ''; // "1234565432123456"
+//   const lastNumbers = str.slice(-4); // 5678
+//   console.log(lastNumbers.padStart(str.length, '*'));
+// };
+
+// maskCreditCard(4567876543345678);
+// maskCreditCard('456786789');
+
+// repeat
+
+// const message2 = 'Bad weather... All departures delayed...';
+// console.log(message2.repeat(5));
