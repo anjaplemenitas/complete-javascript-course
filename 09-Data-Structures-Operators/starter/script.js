@@ -558,7 +558,7 @@ const camelCase = function (text) {
     console.log(camelCaseWord + '✅'.repeat(text.indexOf(word) + 1));
   }
 };
-*/
+
 // bonus challenge
 
 const flights =
@@ -585,3 +585,5 @@ const messageFlights = function (info) {
 };
 
 messageFlights(flights);
+
+*/
